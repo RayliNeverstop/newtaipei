@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WJS 2026 Athlete Schedule</title>
+    <style>
+        :root {
+            --primary: #004d40;
+            --accent: #ffb300;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #7f8c8d;
+            --radius: 16px;
+        }
+		details.custom-dropdown { margin-top: 12px; }
+        details.custom-dropdown summary { display: inline-flex; align-items: center; padding: 8px 16px; background: #f0f4f8; color: var(--primary); border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; user-select: none; transition: background 0.2s; list-style: none; }
+        details.custom-dropdown summary::-webkit-details-marker { display: none; } /* 隱藏原本醜醜的箭頭 */
+        details.custom-dropdown summary:hover { background: #e1e8f0; }
+        
+        /* 展開後的內容區塊 */
+        .dropdown-content { margin-top: 10px; padding: 12px 15px; background: #f9fbfb; border-radius: 8px; border-left: 4px solid var(--primary); font-size: 0.9rem; color: #444; line-height: 1.5; }
+        .dropdown-content ul { margin: 8px 0 0 0; padding-left: 20px; }
+        .dropdown-content li { margin-bottom: 5px; }
+
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; margin: 0; padding: 0 0 40px 0; }
+        .container { max-width: 600px; margin: auto; padding: 0 15px; }
+        
+        /* 頂部主視覺 Banner */
+        .hero { position: relative; width: 100%; height: 200px; background-color: #ddd; background-image: url('https://via.placeholder.com/600x250/004d40/ffffff?text=WJS+Official+Banner+Here'); background-size: cover; background-position: center; border-bottom-left-radius: 24px; border-bottom-right-radius: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 25px;}
+        .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 20px; border-bottom-left-radius: 24px; border-bottom-right-radius: 24px; color: white; }
+        .hero h1 { margin: 0; font-size: 1.5rem; font-weight: 800; letter-spacing: 0.5px; }
+
+        .day-title { display: flex; align-items: center; font-weight: 800; color: var(--primary); margin: 30px 0 15px 0; font-size: 1.2rem; }
+        .day-title::before { content: ""; display: inline-block; width: 6px; height: 20px; background: var(--accent); border-radius: 4px; margin-right: 10px; }
+
+        /* 卡片設計 */
+        .card { background: var(--card-bg); border-radius: var(--radius); padding: 0; margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.04); overflow: hidden; position: relative; transition: transform 0.2s; border: 1px solid #eee; }
+        .card-body { padding: 18px; }
+        
+        /* 卡片內的圖片預留區 */
+        .card-img { width: 100%; height: 140px; object-fit: cover; background-color: #e0e0e0; display: block; border-bottom: 1px solid #eee; }
+
+        .time { font-weight: 800; color: var(--primary); font-size: 1.2rem; display: block; margin-bottom: 5px; }
+        .desc { font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
+        .sub-text { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+        .important { color: #d32f2f; font-weight: 700; font-size: 0.85rem; margin-top: 8px; display: inline-block; background: #ffebee; padding: 4px 8px; border-radius: 6px; }
+        
+        /* 當前行程特效 */
+        .current { border: 2px solid #00c853; box-shadow: 0 0 15px rgba(0, 200, 83, 0.2); }
+        .current::after { content: "● NOW"; position: absolute; top: 18px; right: 18px; font-size: 0.75rem; color: #00c853; font-weight: 800; letter-spacing: 1px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        /* 按鈕設計 */
+        .btn-group { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .link-btn { display: inline-flex; align-items: center; padding: 8px 16px; background: #f0f4f8; color: var(--primary); text-decoration: none; border-radius: 20px; font-size: 0.85rem; font-weight: 700; transition: background 0.2s; }
+        .link-btn:hover { background: #e1e8f0; }
+        .link-btn.race-btn { background: var(--primary); color: white; }
+    </style>
+</head>
+<body>
+
+<div class="hero" style="background-image: url('https://newtaipei.travel/content/images/articles/70583/1024x768_articles-image-anstejdppk2imuddvucghg.jpg');">
+    <div class="hero-overlay">
+        <h1>WJS 2026 Athlete Schedule</h1>
+        <div style="font-size: 0.9rem; opacity: 0.9;">Solomon & Samsom</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="day-title">MAR 13 (FRI) - Tonight</div>
+
+    <div class="card current">
+        <div class="card-body">
+            <span class="time">18:00 - 20:00</span>
+            <div class="desc">Dinner</div>
+            <div class="sub-text">Buffet available. Enjoy your meal and rest well!</div>
+        </div>
+    </div>
+
+    <div class="day-title">MAR 14 (SAT) - Preparation</div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">07:00 - 10:00</span>
+            <div class="desc">Breakfast</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">09:00 - 12:00</span>
+            <div class="desc">Athlete Lounge & Physio (18F)</div>
+            <div class="sub-text">Book a 20-min physical therapy session if needed.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">12:00 - 14:00</span>
+            <div class="desc">Lunch</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">13:15 - 14:00</span>
+            <div class="desc">Technical Meeting (18F)</div>
+            <div class="sub-text">Detailed race instructions and gear check.</div>
+            <div class="btn-group">
+<details class="custom-dropdown">
+                <summary>ℹ️ Meeting Details (Tap to expand)</summary>
+                <div class="dropdown-content">
+                    <ul>
+                        <li><strong>Athletes Bibs, Chips and Personal Drinks Labels</strong> will be provided.</li>
+                        <li><strong>Bring all of your competition kits</strong>, including sox and racing shoes. Race kits MUST be confirmed by Referees.</li>
+                    </ul>
+                </div>
+            </details>           </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">14:00 - 18:00</span>
+            <div class="desc">Athlete Lounge Open (18F)</div>
+            <div class="sub-text">Physio available until 17:00.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">18:00 - 20:00</span>
+            <div class="desc">Dinner</div>
+        </div>
+    </div>
+
+    <div class="day-title">MAR 15 (SUN) - RACE DAY 🏃‍♂️</div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">04:00 - 05:00</span>
+            <div class="desc">Race Day Breakfast</div>
+            <div class="sub-text">Breakfast Box provided.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">04:30 - 05:00</span>
+            <div class="desc">Special Drinks Drop-off</div>
+            <div class="sub-text">Place your drinks at 1F Lobby before 05:00.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">05:00</span>
+            <div class="desc">Meet in 1F Hotel Lobby</div>
+            <div class="sub-text">Heading to the race venue together.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time" style="color: #d32f2f; font-size: 1.5rem;">06:30</span>
+            <div class="desc"><strong style="color: #d32f2f;">RACE START!</strong></div>
+            <div class="btn-group">
+                <a href="https://wanjinshi-marathon.com.tw/wp-content/uploads/2023/10/%E7%AB%B6%E8%B3%BD%E8%B7%AF%E7%B7%9Av2.png" class="link-btn race-btn">🗺️ View Route Map</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">09:45 - 10:30</span>
+            <div class="desc">Awards & Press Conference</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">12:00 - 14:00</span>
+            <div class="desc">Lunch</div>
+            <div class="sub-text">Post-race meal at the hotel.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <span class="time">17:00</span>
+            <div class="desc">Airport Shuttle Departs</div>
+            <span class="important">⚠️ Please return your Timing Chip before leaving!</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
